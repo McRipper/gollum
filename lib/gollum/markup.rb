@@ -3,9 +3,6 @@ require 'cgi'
 require 'pygments'
 require 'base64'
 
-# initialize Pygments
-Pygments.start
-
 module Gollum
 
   class Markup
@@ -510,12 +507,7 @@ module Gollum
       highlighted = []
       blocks.each do |lang, code|
         encoding ||= 'utf-8'
-        begin
-          hl_code = Pygments.highlight(code, :lexer => lang, :options => {:encoding => encoding.to_s})
-        rescue ::RubyPython::PythonError
-          hl_code = code
-        end
-        highlighted << hl_code
+        highlighted << code
       end
       
       @codemap.each do |id, spec|
