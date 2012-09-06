@@ -1,6 +1,5 @@
 require 'digest/sha1'
 require 'cgi'
-require 'pygments'
 require 'base64'
 
 module Gollum
